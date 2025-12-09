@@ -61,126 +61,70 @@ Below is a standard installation workflow.
 
 ---
 
-## 1. **Clone the Repository**
+1. **Clone the Repository**
 
 ```bash
 git clone https://github.com/<your-username>/phoenix-legal-ai-platform.git
 cd phoenix-legal-ai-platform
+```
 
-2. Create a Virtual Environment
+**2. Create a Virtual Environment**
 
 Linux/macOS:
-
+```
 python3 -m venv .venv
 source .venv/bin/activate
-
+```
 
 Windows PowerShell:
-
+```
 python -m venv .venv
 .venv\Scripts\activate
-
-3. Install Python Dependencies
-pip install --upgrade pip
+```
+**3. Install Python Dependencies**
+```pip install --upgrade pip
 pip install -r requirements.txt
-
+```
 
 Dependencies include:
-
 FastAPI
-
 Uvicorn
-
 httpx
-
 chromadb
-
 sentence-transformers
-
 python-docx + lxml
-
 numpy
 
-and other standard helpers
-
-4. Download or Install Models
+**4. Download or Install Models**
 For embeddings:
-SentenceTransformer("all-MiniLM-L6-v2")
-
-
-Downloaded automatically on first run.
+SentenceTransformer("all-MiniLM-L6-v2") should be downloaded automatically on first run.
 
 For LLM inference (Ollama):
 
-Install Ollama (if you want local LLMs):
+  Install Ollama (if you want local LLMs): https://ollama.ai/download
 
-https://ollama.ai/download
+Update app.py with the model you prefer.
 
-Then pull a model (example):
-
-ollama pull llama3:instruct
-
-
-Update app.py with the model name you prefer.
-
-5. Start the Phoenix API
+**5. Start the Phoenix API**
 
 From the project directory:
 
+```
 uvicorn app:app --host 0.0.0.0 --port 8000 --reload
-
+```
 
 You should see:
 
 INFO: 	Uvicorn running on http://0.0.0.0:8000
 
-6. Access the Web UI
-
-If you are using the included demo UI:
+**6. Access the Web UI**
 
 Open → ui/index.html in your browser
-OR
-
-Point your WordPress/HTML widget to:
-
-http://localhost:8000/api/legal/query
-http://localhost:8000/api/intake/analyze
-http://localhost:8000/api/contracts/... etc.
-
-🧪 Testing the API (Examples)
-Statutory Query:
-curl -X POST http://localhost:8000/api/legal/query \
-  -H "Content-Type: application/json" \
-  -d '{"question": "Does Michigan require breach notification?", "states": ["mi","ca"]}'
-
-Intake Request:
-curl -X POST http://localhost:8000/api/intake/analyze \
-  -H "Content-Type: application/json" \
-  -d '{"text": "We received a customer complaint about a data breach."}'
-
-Contract Redline Request:
-curl -X POST http://localhost:8000/api/contracts/redline \
-  -F "template=@template.docx" \
-  -F "counterparty=@cp.docx" \
-  -F "persona=General Counsel"
-
-🛡️ Security
-
-Phoenix:
-
-runs entirely on your hardware
-
-stores no data at rest
-
-sends no data to cloud providers
-
-is compatible with air-gapped environments
-
-Perfect for legal teams with strict confidentiality and data residency requirements.
 
 📜 License
 
 Phoenix is open-source under the GPL 3.0 License.
+
 
 ⭐ Contributing
 
@@ -190,6 +134,6 @@ This project is designed for legal engineers, developers, and tech-forward attor
 
 💬 Questions or Collaboration
 
-For consulting, implementation help, or custom AI tooling for your legal department, feel free to reach out linuxlawyer.com or shawn@shawnclarklaw.com
+For consulting, implementation help, or custom AI tooling for your legal department, feel free to reach out at shawn@shawnclarklaw.com
 
 
