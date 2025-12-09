@@ -44,24 +44,6 @@ Phoenix runs entirely on **local GPU hardware**, uses **open-source models**, an
 
 ## 📁 Project Structure
 
-
-
-phoenix-legal-ai-platform/
-│
-├── app.py # FastAPI application entrypoint
-├── north_star_config.py # Global contract rules
-├── persona_delta.py # Persona-based redline generator
-├── redline_apply.py # DOCX tracked change generator
-├── redline_docx.py # High-fidelity XML DOCX redline engine
-├── semantic_matcher.py # Clause matching + embeddings
-│
-├── requirements.txt
-├── README.md
-├── LICENSE
-│
-└── ui/ # Front-end demo (HTML/JS/CSS)
-
-
 All Python files are kept at the same level to preserve import paths and simplify installation.
 
 ---
