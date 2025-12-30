@@ -54,7 +54,7 @@ Phoenix runs entirely on **local GPU hardware**, uses **open-source models**, an
 
 ## 📁 Project Structure
 
-All Python files are kept at the same level to preserve import paths and simplify installation.
+Recently refactored the files for organization.
 
 ---
 
@@ -138,7 +138,7 @@ Open → http://127.0.0.1:8000/
 
 📜 License
 
-Phoenix is open-source under the GPL 3.0 License.
+Phoenix is open-source under the MIT License.
 
 
 ⭐ Contributing
