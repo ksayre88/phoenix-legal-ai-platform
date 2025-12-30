@@ -1,4 +1,4 @@
-***Please note I am not a professional programmer, I am a lawyer. A demo of this platform is available at https://api.linuxlawyer.com/ui
+A demo of this platform is available at https://api.linuxlawyer.com/ui
 This repository does not include the RAG or dataset for Michigan and California statutes.
 
 # Phoenix: Internally-Hosted Legal AI Platform
