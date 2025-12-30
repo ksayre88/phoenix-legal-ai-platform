@@ -125,12 +125,12 @@ Update `main.py` or set `PHOENIX_MODEL_NAME` with the model you prefer.
 From the project directory:
 
 ```
-uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+uvicorn main:app --host 127.0.0.1 --port 8000 --reload
 ```
 
 You should see:
 
-INFO: 	Uvicorn running on http://0.0.0.0:8000
+INFO: 	Uvicorn running on http://127.0.0.1:8000/
 
 **7. Access the Web UI**
 
