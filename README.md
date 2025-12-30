@@ -40,6 +40,16 @@ Phoenix runs entirely on **local GPU hardware**, uses **open-source models**, an
 - Structured deltas (insert/delete/replace/comments)  
 - DOCX redline export (tracked changes + comments)  
 
+### **Policy Mapper**
+- Upload policies (DOCX/PDF/HTML/TXT) for structured summaries  
+- Extracts standardized data types for downstream analysis  
+- JSON-ready output for integrations  
+
+### **IP Guard**
+- Automatic request tracking and blocklist enforcement  
+- Local admin UI for managing blocked IPs  
+- Persisted blocklist on disk for reloads  
+
 ---
 
 ## 📁 Project Structure
@@ -82,20 +92,25 @@ python -m venv .venv
 .venv\Scripts\activate
 ```
 **3. Install Python Dependencies**
-```pip install --upgrade pip
+```bash
+pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-Dependencies include:
-FastAPI
-Uvicorn
-httpx
-chromadb
-sentence-transformers
-python-docx + lxml
-numpy
+Optional dependency notes:
+- `chromadb` is used for the RAG statute index.
+- `pypdf` is required for PDF uploads in the mapper/contract tools.
 
-**4. Download or Install Models**
+**4. Configure Environment (Optional)**
+Set these as needed:
+- `PHOENIX_MODEL_NAME` (default: `qwen2.5:14b`)
+- `OLLAMA_URL` (default: `http://localhost:11434`)
+- `CORPUS_ROOT` (default: `~/legal-rag`)
+- `USE_RAG_BACKEND` (default: `True`)
+- `IP_BLOCKLIST_PATH` (default: `./ip_blocklist.json`)
+- `ADMIN_TOKEN` (enables `/admin/ips` IP admin UI)
+
+**5. Download or Install Models**
 For embeddings:
 SentenceTransformer("all-MiniLM-L6-v2") should be downloaded automatically on first run.
 
@@ -103,23 +118,23 @@ For LLM inference (Ollama):
 
   Install Ollama (if you want local LLMs): https://ollama.ai/download
 
-Update app.py with the model you prefer.
+Update `main.py` or set `PHOENIX_MODEL_NAME` with the model you prefer.
 
-**5. Start the Phoenix API**
+**6. Start the Phoenix API**
 
 From the project directory:
 
 ```
-uvicorn app:app --host 0.0.0.0 --port 8000 --reload
+uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
 You should see:
 
 INFO: 	Uvicorn running on http://0.0.0.0:8000
 
-**6. Access the Web UI**
+**7. Access the Web UI**
 
-Open → ui/index.html in your browser
+Open → http://127.0.0.1:8000/
 
 📜 License
 
@@ -135,5 +150,4 @@ This project is designed for legal engineers, developers, and tech-forward attor
 💬 Questions or Collaboration
 
 For consulting, implementation help, or custom AI tooling for your legal department, feel free to reach out at shawn@shawnclarklaw.com
-
 
